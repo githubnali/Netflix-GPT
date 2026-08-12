@@ -35,5 +35,27 @@ If you are developing a production application, we recommend using TypeScript wi
     - Movie Suggestions
 
 
+# Netflix + GPT
+- Routing "React Router DOM"
 - Header
 - Login Form
+- Sign Up Form
+- Form validation
+- useRef() Hook
+- firebase setup
+- deplying app to production
+- create sign up authentication in firebase
+- implemented sign in user API
+- Created Redux Store with user slice
+- implemented Signout
+- updated profile api call
+- 
+
+# Bug Fixes
+- Sign up user displayname and profile picture update
+- if the user is not logged in /browse to login vice versa
+
+
+
+# Next Step Fetch Movies from (TMDB)
+- 
