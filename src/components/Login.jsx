@@ -7,6 +7,11 @@ import { useDispatch } from "react-redux";
 
 import { addUser } from "../utils/useSlice";
 
+import { BG_LOGO } from "../utils/constants";
+
+import { DEFAULT_USER_AVATAR } from "../utils/constants";
+
+
 const Login = () => {
   //set the form change
   const [isSignInForm, setIsSignForm]= useState(true);
@@ -48,7 +53,7 @@ const Login = () => {
 
           updateProfile(user, {
             displayName: fullName.current.value, 
-            photoURL: "https://avatars.githubusercontent.com/u/108607635?v=4"
+            photoURL: DEFAULT_USER_AVATAR
           }).then(() => {
             // Profile updated!
             const {uid, email, displayName, photoURL} = auth.currentUser;
@@ -77,7 +82,6 @@ const Login = () => {
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -92,7 +96,7 @@ const Login = () => {
     <>
     <Header/>
     <div className="absolute">
-      <img src="https://assets.nflxext.com/ffe/siteui/vlv3/0ce6c17e-e188-4f13-aaf2-6366e12ba739/web/IN-en-20260803-TRIFECTA-perspective_7730cca2-6324-4104-bf66-1a1f6e1a3e61_large.jpg" alt="logo" className="h-screen w-screen" />
+      <img src={BG_LOGO} alt="netflix+GPT bg image" className="h-screen w-screen" />
     </div>
     <form onSubmit={(e) => e.preventDefault()} className="p-5 px-8 bg-black absolute w-3/12 my-24 mx-auto left-0 right-0 text-white bg-opacity-80">
       <h1 className="font-bold text-xl p-3 my-3">

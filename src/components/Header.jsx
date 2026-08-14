@@ -28,7 +28,7 @@ const Header = () => {
   }
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
         if (user) {
             // User is signed in, see docs for a list of available properties
             // https://firebase.google.com/docs/reference/js/auth.user
@@ -45,13 +45,16 @@ const Header = () => {
         }
     });
 
+    //this will be called unsubscribe when component unmounts
+    return () => unsubscribe();
+
   }, [])
 
   return (
 
-    <div className="absolute px-8 py-2 bg-linear-to-b from-black z-10 flex justify-between w-screen">
+    <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between bg-linear-to-b from-black px-8 py-2">
       <img
-        className="w-44"
+        className="h-16 w-auto object-contain"
         src="/header_logo.png"
         alt="Netflix GPT logo"
       />    
@@ -70,7 +73,7 @@ const Header = () => {
     }
     
     
-    </div>
+    </header>
 
   )
 }

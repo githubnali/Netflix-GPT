@@ -54,8 +54,23 @@ If you are developing a production application, we recommend using TypeScript wi
 # Bug Fixes
 - Sign up user displayname and profile picture update
 - if the user is not logged in /browse to login vice versa
+- unsubscribed to onAuthStateChanged callback
+- add hardcoded values to constants file very important
 
 
 
 # Next Step Fetch Movies from (TMDB)
-- 
+- Register for TMDB API
+- Create a new APP
+- Get Access Toekn
+- Go to Documentation
+- get data from TMDB now playing movive list from API
+- custom hook for now playing movies
+- updated the store with nowplaying
+- created movie slice
+- planning for main container and secondary container
+- fetch data for trailer video
+- updated store with trailer video data
+- embeded the youtube video
+- make it autoplay and mute
+- added tailwind utility to looks main container awesome
