@@ -17,7 +17,7 @@ const MainContainer = () => {
 
 
   return (
-    <main className="fixed inset-0 overflow-hidden bg-black">
+    <main className="fixed inset-0 z-0 h-[100dvh] w-[100dvw] overflow-hidden bg-black">
         <VideoTitle 
           title={original_title} overview={overview} 
         />

@@ -93,13 +93,16 @@ const Login = () => {
   }
 
   return (
-    <>
-    <Header/>
-    <div className="absolute">
-      <img src={BG_LOGO} alt="netflix+GPT bg image" className="h-screen w-screen" />
-    </div>
-    <form onSubmit={(e) => e.preventDefault()} className="p-5 px-8 bg-black absolute w-3/12 my-24 mx-auto left-0 right-0 text-white bg-opacity-80">
-      <h1 className="font-bold text-xl p-3 my-3">
+    <main className="relative min-h-dvh overflow-x-hidden bg-black">
+      <Header/>
+      <div className="absolute inset-0" aria-hidden="true">
+        <img src={BG_LOGO} alt="" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
+
+      <div className="relative z-10 flex min-h-dvh items-center justify-center px-4 pb-6 pt-24 sm:px-6 sm:pt-28">
+      <form onSubmit={(e) => e.preventDefault()} className="w-full max-w-md rounded-md bg-black/80 p-6 text-white shadow-2xl sm:p-10">
+      <h1 className="mb-6 text-2xl font-bold sm:text-3xl">
         {isSignInForm ? "Sign In" : "Sign Up"}
       </h1>
       
@@ -107,30 +110,30 @@ const Login = () => {
         <input
           type="text"
           placeholder="Full Name"
-          className="p-3 my-3  w-full bg-gray-700 rounded-sm"
+          className="mb-4 w-full rounded-sm bg-gray-700 p-3 text-base outline-none ring-0 placeholder:text-gray-300 focus:ring-2 focus:ring-red-500"
           ref={fullName}
           
         />
       )}
 
       <input
-        type="text"
+        type="email"
         placeholder="Email Address"
-        className="p-3 my-3  w-full bg-gray-700 rounded-sm"
+        className="mb-4 w-full rounded-sm bg-gray-700 p-3 text-base outline-none ring-0 placeholder:text-gray-300 focus:ring-2 focus:ring-red-500"
         ref={email}
       />
       <input
         type="password"
         placeholder="Password"
-        className="p-3 my-3 w-full bg-gray-700 rounded-sm"
+        className="mb-1 w-full rounded-sm bg-gray-700 p-3 text-base outline-none ring-0 placeholder:text-gray-300 focus:ring-2 focus:ring-red-500"
         ref={password}
       />
-      <p className="text-red-500 py-2 font-semibold text-l">{errorMessage}</p>
-      <button className="p-3 px-6 my-3 text-white bg-red-500 rounded-sm w-full font-semibold" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
-      <p className="py-4 cursor-pointer">{isSignInForm ? "New to Netflix+GPT?" : "Already regisered"}  <a className="underline text-red-600 font-semibold" onClick={toggleSignInForm}>{isSignInForm ? "Sign Up Now" : "Sign In Now"}</a></p>
-    </form> 
-    
-    </>
+      <p className="min-h-9 py-2 text-sm font-semibold text-red-500" aria-live="polite">{errorMessage}</p>
+      <button className="mt-2 w-full rounded-sm bg-red-600 px-6 py-3 font-semibold transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 focus:ring-offset-black" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
+      <p className="pt-6 text-sm text-gray-300 sm:text-base">{isSignInForm ? "New to Netflix+GPT?" : "Already registered"}  <button type="button" className="font-semibold text-red-500 underline underline-offset-2 hover:text-red-400" onClick={toggleSignInForm}>{isSignInForm ? "Sign Up Now" : "Sign In Now"}</button></p>
+      </form>
+      </div>
+    </main>
   )
 }
 

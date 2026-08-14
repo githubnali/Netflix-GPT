@@ -52,22 +52,22 @@ const Header = () => {
 
   return (
 
-    <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between bg-linear-to-b from-black px-8 py-2">
+    <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between bg-linear-to-b from-black px-4 py-2 sm:px-8">
       <img
-        className="h-16 w-auto object-contain"
+        className="h-11 w-auto object-contain sm:h-14 md:h-16"
         src="/header_logo.png"
         alt="Netflix GPT logo"
       />    
 
     {user && 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-2 sm:gap-5">
           <img 
             src={user.photoURL}
             alt="user-logo"
-            className="w-10 rounded-full"
+            className="w-8 rounded-full sm:w-10"
           />
           
-          <button className="text-white font-semibold cursor-pointer" onClick={handleSignOut}>Sign Out</button>
+          <button className="cursor-pointer text-sm font-semibold text-white sm:text-base" onClick={handleSignOut}>Sign Out</button>
         </div>
     
     }

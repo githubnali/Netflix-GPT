@@ -3,16 +3,17 @@ import { MdOutlineInfo } from "react-icons/md";
 
 const VideoTitle = ({title, overview}) => {
   return (
-    <section className="absolute inset-0 z-10 bg-gradient-to-r from-black pt-[15%] px-12">
-        <h1 className="text-4xl font-bold text-white">{title}</h1>
-        <p className="py-6 text-sm w-1/2 text-white">{overview}</p>
+    <section className="absolute inset-0 z-10 bg-gradient-to-r from-black via-black/70 to-transparent">
+      <div className="flex h-full max-w-xl flex-col justify-center px-5 pt-14 sm:px-10 sm:pt-16 md:max-w-2xl md:px-16">
+        <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">{title}</h1>
+        <p className="hidden max-w-xl py-5 text-sm leading-relaxed text-white/90 sm:block md:py-6 md:text-base">{overview}</p>
 
-        <div className="flex gap-5">
-            <button className="cursor-pointer bg-opacity-50 bg-white text-black py-2 px-8 rounded text-lg font-semibold flex items-center gap-1 hover:bg-opacity-80">
+        <div className="mt-5 flex flex-wrap gap-3 sm:mt-0 sm:gap-4">
+            <button className="flex cursor-pointer items-center gap-1 rounded bg-white px-5 py-2.5 text-base font-semibold text-black transition hover:bg-white/80 focus:outline-none focus:ring-2 focus:ring-white sm:px-8 sm:text-lg">
              <IoIosPlay /> 
              <span>Play</span>
             </button>
-            <button className="cursor-pointer bg-opacity-50 bg-gray-500 text-white py-2 px-8 rounded text-lg font-semibold flex items-center gap-1">
+            <button className="hidden cursor-pointer items-center gap-1 rounded bg-gray-500/70 px-5 py-2.5 text-base font-semibold text-white transition hover:bg-gray-500 sm:flex sm:px-8 sm:text-lg">
               <MdOutlineInfo/>
 
               <span>
@@ -20,6 +21,7 @@ const VideoTitle = ({title, overview}) => {
               </span>
             </button>
         </div>
+      </div>
     </section>
   )
 }

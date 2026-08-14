@@ -74,3 +74,6 @@ If you are developing a production application, we recommend using TypeScript wi
 - embeded the youtube video
 - make it autoplay and mute
 - added tailwind utility to looks main container awesome
+
+# let's build the secondary component
+- 
