@@ -76,4 +76,8 @@ If you are developing a production application, we recommend using TypeScript wi
 - added tailwind utility to looks main container awesome
 
 # let's build the secondary component
-- 
+- Build the Movie List Component
+- Build the movie cards component
+- TMDB Image CDN URL
+- Made the  browse page amazing with tailwinf css
+- usePopular custom hook added popular movies to the movies slice and fetching the data

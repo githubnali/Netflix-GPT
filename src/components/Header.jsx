@@ -52,9 +52,9 @@ const Header = () => {
 
   return (
 
-    <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between bg-linear-to-b from-black px-4 py-2 sm:px-8">
+    <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between bg-linear-to-b from-black px-4 py-2 sm:px-8 md:px-12">
       <img
-        className="h-11 w-auto object-contain sm:h-14 md:h-16"
+        className="h-12 w-auto object-contain sm:h-16 md:h-20"
         src="/header_logo.png"
         alt="Netflix GPT logo"
       />    

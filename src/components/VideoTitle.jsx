@@ -4,8 +4,8 @@ import { MdOutlineInfo } from "react-icons/md";
 const VideoTitle = ({title, overview}) => {
   return (
     <section className="absolute inset-0 z-10 bg-gradient-to-r from-black via-black/70 to-transparent">
-      <div className="flex h-full max-w-xl flex-col justify-center px-5 pt-14 sm:px-10 sm:pt-16 md:max-w-2xl md:px-16">
-        <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">{title}</h1>
+      <div className="flex h-full w-full max-w-xl flex-col justify-center px-4 pt-14 sm:px-8 sm:pt-16 md:max-w-2xl md:px-12">
+        <h1 className="max-w-[16ch] text-balance text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">{title}</h1>
         <p className="hidden max-w-xl py-5 text-sm leading-relaxed text-white/90 sm:block md:py-6 md:text-base">{overview}</p>
 
         <div className="mt-5 flex flex-wrap gap-3 sm:mt-0 sm:gap-4">
