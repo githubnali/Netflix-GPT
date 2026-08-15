@@ -81,3 +81,15 @@ If you are developing a production application, we recommend using TypeScript wi
 - TMDB Image CDN URL
 - Made the  browse page amazing with tailwinf css
 - usePopular custom hook added popular movies to the movies slice and fetching the data
+
+
+# GPT Search feature
+- will have Search bar to where user can search for something that recommendadtion suggestions can give
+- ex: old bollywood movies, trending love movies in tollywodo
+- we will use OPEN AI GPT APIS (build by OPEN AI) to get the recommendations
+
+- created GPT Search bar
+- added multi-lang feature in our app
+- integrate GPT APIS
+- GET OPEN AI API KEY
+
