@@ -93,3 +93,5 @@ If you are developing a production application, we recommend using TypeScript wi
 - integrate GPT APIS
 - GET OPEN AI API KEY
 
+- ask the user to give their own GPT API key to play with results
+

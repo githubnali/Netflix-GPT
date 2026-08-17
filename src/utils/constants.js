@@ -8,7 +8,7 @@ export const OPTIONS = {
   method: 'GET',
   headers: {
     accept: 'application/json', 
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNTJhOWI1YTcwMzU4ZWE4YWU2ZWE2MGJhMTJmMmJkZSIsIm5iZiI6MTczNDYzMDA3Mi4zMzEsInN1YiI6IjY3NjQ1YWI4MGM4NjVmMjQ4OTFmNjRiMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FuiTR60iSuGV3orWzUHXMt9xh_jpqglKdkYtDJ-fK3E'
+    Authorization: 'Bearer '+ import.meta.env.VITE_TMDB_KEY,
   }
 };
 
@@ -25,3 +25,8 @@ export const SUPPORTED_LANGUAGES = [
     identifier: 'spanish', name: "Spanish"
   }
 ]
+
+// export const OPENAI_KEY = "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";
+
+//uma account api key
+export const OPENAI_KEY = import.meta.env.VITE_OPENAI_KEY
