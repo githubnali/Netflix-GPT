@@ -92,6 +92,12 @@ If you are developing a production application, we recommend using TypeScript wi
 - added multi-lang feature in our app
 - integrate GPT APIS
 - GET OPEN AI API KEY
+- gPT serch api call
+- fetched GPT movie suggestions from TMDB
+- created GPT slice and added data
+- reuse movie list component to make movie suggestions container
+- adding .env file to gitignore
+- Memoization
 
 - ask the user to give their own GPT API key to play with results
 
