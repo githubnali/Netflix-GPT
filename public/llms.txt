@@ -1,0 +1,15 @@
+# Netflix+GPT
+
+> A Netflix-style movie browsing app with AI-powered movie recommendations, built as a personal/learning project.
+
+Netflix+GPT lets signed-in users browse trending, popular, top-rated, and upcoming movies sourced from The Movie Database (TMDB), watch trailers, view detailed movie pages (cast, rating, similar titles), and get natural-language movie recommendations powered by an LLM (OpenAI GPT). Authentication is handled by Firebase.
+
+## Pages
+
+- [Sign In / Sign Up](https://nalinfixgpt.netlify.app/): the only page reachable without an account; everything else requires signing in first.
+
+## Notes
+
+- This is a demo/learning project, not a commercial streaming service — it does not host or stream any licensed video content, only publicly available YouTube trailers.
+- Movie data, posters, and trailers are sourced from the TMDB API and are TMDB's/its providers' content, not original to this site.
+- The `/browse` area and movie detail pages require authentication and are excluded from crawling (see robots.txt); their content is per-user TMDB data, not unique editorial content.

@@ -13,6 +13,7 @@ import { resetGptSearch } from "../utils/gptSlice";
 const Login = lazy(() => import("./Login/Login"));
 const Browse = lazy(() => import("./Browse/Browse"));
 const MovieDetails = lazy(() => import("./MovieDetails/MovieDetails"));
+const NotFound = lazy(() => import("./NotFound/NotFound"));
 
 const PageLoader = () => (
     <div className="flex min-h-dvh items-center justify-center bg-black text-white">
@@ -60,6 +61,10 @@ const Body = () => {
         {
             path: "/browse/movie/:movieId",
             element: <ProtectedRoute><Suspense fallback={<PageLoader/>}><MovieDetails/></Suspense></ProtectedRoute>
+        },
+        {
+            path: "*",
+            element: <Suspense fallback={<PageLoader/>}><NotFound/></Suspense>
         }
     ]);
 

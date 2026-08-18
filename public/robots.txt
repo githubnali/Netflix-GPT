@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /browse
+
+Sitemap: https://nalinfixgpt.netlify.app/sitemap.xml
