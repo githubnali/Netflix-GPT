@@ -10,5 +10,15 @@ export default defineConfig({
   ],
   build: {
     outDir: 'build',
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return;
+          if (id.includes('react-router-dom') || id.includes('/react/') || id.includes('/react-dom/')) return 'vendor-react';
+          if (id.includes('react-redux') || id.includes('@reduxjs')) return 'vendor-redux';
+          if (id.includes('firebase')) return 'vendor-firebase';
+        },
+      },
+    },
   }
 })

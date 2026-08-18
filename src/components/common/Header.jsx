@@ -1,20 +1,15 @@
 // import Logo from '../assets/netflix+GPT_logo';
 
 import { signOut } from "firebase/auth";
-import { auth } from "../utils/firebase";
+import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-
-import { addUser, removeUser } from "../utils/useSlice";
-
-import { toggleGptSearchView } from "../utils/gptSlice";
-import { SUPPORTED_LANGUAGES } from "../utils/constants";
-import { changeLanguage } from "../utils/configSlice";
+import { toggleGptSearchView } from "../../utils/gptSlice";
+import { SUPPORTED_LANGUAGES } from "../../utils/constants";
+import { changeLanguage } from "../../utils/configSlice";
 
 const Header = () => {
 
@@ -26,35 +21,11 @@ const Header = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   const handleSignOut = () => {
-    signOut(auth).then(() => {
-    }).catch(() => {
+    signOut(auth).catch(() => {
       // An error happened.
       navigate("/error")
     });
   }
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/auth.user
-            const {uid, email, displayName, photoURL} = user;
-            
-            dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
-            navigate("/browse");
-            // ...
-        } else {
-            // User is signed out
-            // ...
-            dispatch(removeUser());
-            navigate("/");
-        }
-    });
-
-    //this will be called unsubscribe when component unmounts
-    return () => unsubscribe();
-
-  }, [])
 
   const handleGptSearchClick = () => {
     //Toggle the GPT Search
@@ -77,15 +48,18 @@ const Header = () => {
     {user && 
         <div className="flex items-center gap-2 sm:gap-5">
 
-          {showGptSearch && 
-            <select className="p-2 rounded bg-gray-400 text-white cursor-pointer" onChange={handleLanguageChange}>
-              {SUPPORTED_LANGUAGES.map(lang => 
+          {showGptSearch &&
+            <select
+              className="cursor-pointer rounded-sm border-2 border-gray-800 bg-black/70 p-2 text-sm text-white outline-none focus:ring-2 focus:ring-red-500 sm:text-base"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES.map(lang =>
                 <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>
               )}
             </select>
           }
 
-          <button className="py-2 px-4 bg-purple-800 text-white my-2 rounded-xl font-semibold cursor-pointer" onClick={handleGptSearchClick}>{showGptSearch ? "Home Page" : "GPT Search"}  </button>
+          <button className="cursor-pointer rounded-sm bg-red-600 px-4 py-2 font-semibold text-white transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300" onClick={handleGptSearchClick}>{showGptSearch ? "Home Page" : "GPT Search"}</button>
           <img 
             src={user.photoURL}
             alt="user-logo"

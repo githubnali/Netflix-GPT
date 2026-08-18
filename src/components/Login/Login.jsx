@@ -1,25 +1,36 @@
-import { useRef, useState } from "react";
-import Header from "./Header";
-import { checkValidData } from "../utils/validate";
+import { useEffect, useRef, useState } from "react";
+import Header from "../common/Header";
+import { checkValidData } from "../../utils/validate";
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile  } from "firebase/auth";
-import { auth } from "../utils/firebase";
-import { useDispatch } from "react-redux";
+import { auth } from "../../utils/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { addUser } from "../utils/useSlice";
+import { addUser } from "../../utils/useSlice";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
-import { BG_LOGO } from "../utils/constants";
+import { BG_LOGO } from "../../utils/constants";
 
-import { DEFAULT_USER_AVATAR } from "../utils/constants";
+import { DEFAULT_USER_AVATAR } from "../../utils/constants";
 
 
 const Login = () => {
   //set the form change
   const [isSignInForm, setIsSignForm]= useState(true);
+  useDocumentTitle(isSignInForm ? "Netflix+GPT | Sign In" : "Netflix+GPT | Sign Up");
 
   //to error message
   const [errorMessage, setErrorMessage] = useState(null);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/browse", { replace: true });
+    }
+  }, [user, navigate]);
 
 
   
@@ -59,15 +70,10 @@ const Login = () => {
             const {uid, email, displayName, photoURL} = auth.currentUser;
             
             dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
-            
-            //update our store from here
-
-            
-            // ...
           }).catch((error) => {
             setErrorMessage(error.message);
           });
-          
+
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -77,12 +83,9 @@ const Login = () => {
         });
 
     } else {
-      
+
       //sign in logic
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-        .then((userCredential) => {
-          const user = userCredential.user;
-        })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -129,8 +132,8 @@ const Login = () => {
         ref={password}
       />
       <p className="min-h-9 py-2 text-sm font-semibold text-red-500" aria-live="polite">{errorMessage}</p>
-      <button className="mt-2 w-full rounded-sm bg-red-600 px-6 py-3 font-semibold transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 focus:ring-offset-black" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
-      <p className="pt-6 text-sm text-gray-300 sm:text-base">{isSignInForm ? "New to Netflix+GPT?" : "Already registered"}  <button type="button" className="font-semibold text-red-500 underline underline-offset-2 hover:text-red-400" onClick={toggleSignInForm}>{isSignInForm ? "Sign Up Now" : "Sign In Now"}</button></p>
+      <button className="mt-2 w-full rounded-sm bg-red-600 px-6 py-3 font-semibold transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 focus:ring-offset-black cursor-pointer" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
+      <p className="pt-6 text-sm text-gray-300 sm:text-base">{isSignInForm ? "New to Netflix+GPT?" : "Already registered"}  <button type="button" className="font-semibold text-red-500 underline underline-offset-2 hover:text-red-400 cursor-pointer" onClick={toggleSignInForm}>{isSignInForm ? "Sign Up Now" : "Sign In Now"}</button></p>
       </form>
       </div>
     </main>

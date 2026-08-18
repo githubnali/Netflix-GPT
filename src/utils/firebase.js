@@ -1,13 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBLjMJqpDnZwouGy2OHLQYttBAUk0jtXX8",
   authDomain: "netflixgpt-b9a7d.firebaseapp.com",
@@ -18,8 +11,9 @@ const firebaseConfig = {
   measurementId: "G-L33KDEJH2T"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 export const auth = getAuth();
+
+// Deferred so `firebase/analytics` isn't in the initial bundle — it isn't needed for first paint.
+export const initAnalytics = () => import("firebase/analytics").then(({ getAnalytics }) => getAnalytics(app));

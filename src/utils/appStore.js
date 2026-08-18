@@ -7,13 +7,16 @@ import gptReducer from './gptSlice';
 
 import configReducer from "./configSlice";
 
+import movieDetailsReducer from "./movieDetailsSlice";
+
 const appStore = configureStore(
     {
         reducer: {
             user: userReducer,
             movies: moviesReducer,
             gpt: gptReducer,
-            config: configReducer
+            config: configReducer,
+            movieDetails: movieDetailsReducer
 
         }
     }

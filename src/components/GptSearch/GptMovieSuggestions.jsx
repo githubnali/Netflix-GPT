@@ -1,21 +1,27 @@
 import { useSelector } from "react-redux"
-import MovieList from "./MovieList";
-
+import MovieList from "../movies/MovieList";
+import ShimmerGptResults from "../shimmer/ShimmerGptResults";
 
 const GptMovieSuggestions = () => {
 
-    const {movieNames, movieResults} = useSelector((store) => store.gpt);
+    const {movieNames, movieResults, isLoading, errorMessage} = useSelector((store) => store.gpt);
+
+    if (isLoading) return <ShimmerGptResults />;
+
+    if (errorMessage) {
+        return (
+            <p className="mx-auto w-[90%] max-w-4xl rounded bg-black/60 p-4 text-center text-sm font-semibold text-red-500 sm:p-6">
+                {errorMessage}
+            </p>
+        )
+    }
 
     if(!movieNames) return null;
 
-
-
   return (
 
-    <div className="p-4 m-4 bg-black/60 w-[80%] mx-auto">
-
+    <div className="mx-auto w-[90%] max-w-4xl space-y-8 rounded bg-black/60 p-4 sm:p-6">
         {movieNames.map((movieName, index) => <MovieList key={movieName} title={movieName} movies={movieResults[index]}/>)}
-    
     </div>
   )
 }

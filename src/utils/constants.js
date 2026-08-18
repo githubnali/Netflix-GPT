@@ -14,6 +14,10 @@ export const OPTIONS = {
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/"
 
+export const BACKDROP_CDN_URL = "https://image.tmdb.org/t/p/original/"
+
+export const PROFILE_CDN_URL = "https://image.tmdb.org/t/p/w185/"
+
 export const SUPPORTED_LANGUAGES = [
   {
     identifier: 'en', name: "English"
