@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /browse
 
-Sitemap: https://nalinfixgpt.netlify.app/sitemap.xml
+Sitemap: https://netflix-gpt-ten-alpha.vercel.app/sitemap.xml

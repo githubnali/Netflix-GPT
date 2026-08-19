@@ -6,7 +6,7 @@ Netflix+GPT lets signed-in users browse trending, popular, top-rated, and upcomi
 
 ## Pages
 
-- [Sign In / Sign Up](https://nalinfixgpt.netlify.app/): the only page reachable without an account; everything else requires signing in first.
+- [Sign In / Sign Up](https://netflix-gpt-ten-alpha.vercel.app/): the only page reachable without an account; everything else requires signing in first.
 
 ## Notes
 
